@@ -3,6 +3,8 @@
 
 > Node TS Scaffold
 
+This is a scaffold project based on **NodeJS**, **Typescript** and **Clean Architecture**. Current test coverage is 100% and the goal is to keep it that way.
+
 ## Install
 
 ```sh
