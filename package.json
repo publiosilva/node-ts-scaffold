@@ -4,7 +4,6 @@
   "description": "Node TS Scaffold",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node server.ts",
     "build": "rimraf dist && tsc -p tsconfig-build.json && tscpaths -p tsconfig-build.json -s ./src -o ./dist",
     "deploy": "sls deploy",
     "deploy:dev": "npm run deploy -- --stage dev",
