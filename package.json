@@ -1,0 +1,49 @@
+{
+  "name": "node-ts-scaffold",
+  "version": "1.0.0",
+  "description": "Node TS Scaffold",
+  "main": "index.js",
+  "scripts": {
+    "start": "sucrase-node server.ts",
+    "build": "rimraf dist && tsc -p tsconfig-build.json && tscpaths -p tsconfig-build.json -s ./src -o ./dist",
+    "deploy": "sls deploy",
+    "deploy:dev": "npm run deploy -- --stage dev",
+    "deploy:prod": "npm run deploy -- --stage prod",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-coverage",
+    "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "Publio Blenilio",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.2",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "git-commit-msg-linter": "^3.1.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.4",
+    "lint-staged": "^11.0.0",
+    "rimraf": "^3.0.2",
+    "serverless": "^2.52.0",
+    "sucrase": "^3.20.0",
+    "ts-jest": "^27.0.3",
+    "tsconfig-paths": "^3.10.1",
+    "tscpaths": "^0.0.9",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.927.0",
+    "uuid": "^8.3.2"
+  }
+}

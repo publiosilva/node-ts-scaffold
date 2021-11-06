@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb-typescript/base"],
+  "parserOptions": {
+    "project": [
+      "./tsconfig-eslint.json"
+    ]
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "@typescript-eslint/no-throw-literal": "off"
+  }
+}

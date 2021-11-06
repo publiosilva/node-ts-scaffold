@@ -1,0 +1,24 @@
+name: DeployProd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm install
+      - run: npm run test:verbose
+      - run: npm run build
+      - run: npx sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: echo API_KEY=${{ secrets.API_KEY }} >> .env
+      - run: echo PREFIX=${{ secrets.PREFIX }} >> .env
+      - run: echo POSTS_TABLE_NAME=${{ secrets.POSTS_TABLE_NAME }} >> .env
+      - run: npm run deploy:prod

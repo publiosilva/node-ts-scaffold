@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "paths": {
+      "@/spec/*": [
+        "../spec/*"
+      ],
+      "@/*": [
+        "*"
+      ]
+    },
+    "rootDirs": [
+      "src",
+      "spec"
+    ],
+    "target": "ES2019"
+  },
+  "exclude": [],
+  "include": [
+    "src/**/*.ts",
+    "spec/**/*.ts"
+  ]
+}

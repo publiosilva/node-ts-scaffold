@@ -1,0 +1,48 @@
+service: node-ts-scaffold
+
+provider:
+  environment:
+    API_KEY: ${env:API_KEY}
+    PREFIX: ${env:PREFIX}
+    POSTS_TABLE_NAME: ${env:POSTS_TABLE_NAME}
+  iam:
+    role:
+      statements:
+        - Action:
+            - dynamodb:*
+          Effect: "Allow"
+          Resource:
+            - Fn::GetAtt:
+              - PostsTable
+              - Arn
+  lambdaHashingVersion: 20201221
+  name: aws
+  runtime: nodejs12.x
+
+package:
+  individually: true
+
+useDotenv: true
+
+functions:
+  core:
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+    handler: dist/main/handler.handle
+    timeout: 30
+
+resources:
+  Resources:
+    PostsTable:
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${env:POSTS_TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+      Type: AWS::DynamoDB::Table
