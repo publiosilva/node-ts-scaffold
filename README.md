@@ -11,10 +11,10 @@ This is a scaffold project based on **NodeJS**, **Typescript** and **Clean Archi
 yarn install
 ```
 
-## Usage
+## Deploy
 
 ```sh
-yarn run start
+yarn run deploy
 ```
 
 ## Run tests
